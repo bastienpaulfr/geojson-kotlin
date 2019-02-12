@@ -5,14 +5,14 @@ import kotlin.reflect.KClass
 
 /**
  * Codifies a mapping between GeoJSON types and their Kotlin-class representations.
- * Used by [GeometrySerializer] and [GeometryDeserializer].
+ * Used by [GeoJsonSerializer] and [GeoJsonDeserializer].
  */
 sealed class GeoJsonType( val typeValue: String, val `class`: KClass<*>) {
 
     sealed class Geometry(typeValue: String, `class`: KClass<*>) : GeoJsonType(typeValue,`class`) {
 
         companion object {
-            val coordinatesKey = "coordinates"
+            const val coordinatesKey = "coordinates"
         }
 
         object Point           : Geometry( typeValue = "Point"          , `class` = geojson.geometry.impl.Point          ::class)
@@ -24,19 +24,19 @@ sealed class GeoJsonType( val typeValue: String, val `class`: KClass<*>) {
     }
 
     object Feature : GeoJsonType(typeValue = "Feature", `class` = Feature::class) {
-        val idKey         = "id"
-        val propertiesKey = "properties"
-        val geometryKey   = "geometry"
+        const val idKey         = "id"
+        const val propertiesKey = "properties"
+        const val geometryKey   = "geometry"
     }
 
     object FeatureCollection : GeoJsonType(typeValue = "FeatureCollection", `class` = FeatureCollection ::class) {
-        val featuresKey      = "features"
+        const val featuresKey      = "features"
         val totalFeaturesKey = "totalFeatures"
     }
 
     companion object {
 
-        val typeKey = "type"
+        const val typeKey = "type"
 
         val allTypes : Array<GeoJsonType> = arrayOf(
                 GeoJsonType.Geometry.Point,

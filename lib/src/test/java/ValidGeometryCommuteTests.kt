@@ -1,3 +1,4 @@
+import com.google.gson.Gson
 import geojson.GeoJsonObject
 import geojson.geometry.impl.LineString
 import geojson.geometry.impl.MultiPoint
@@ -14,7 +15,10 @@ class ValidGeometryCommuteTests {
 
     @Test
     fun testCommutePoint() {
-        val point = Point( latitude = 1.0, longitude = 1.0 )
+        val point = Point( latitude = 1.0, longitude = 2.0 )
+        val json = Gson().toJson(point)
+        println(json)
+
         testCommuteJson( geoJsonObject = point )
     }
 
@@ -49,7 +53,7 @@ class ValidGeometryCommuteTests {
         testCommuteJson( geoJsonObject = polygon )
     }
 
-    inline private fun <reified T:GeoJsonObject> testCommuteJson(geoJsonObject: T ) {
+    private inline fun <reified T:GeoJsonObject> testCommuteJson(geoJsonObject: T ) {
         val name = GeoJsonType.forObject(geoJsonObject)?.typeValue
         println("Converting $name to JSON...")
         val geoJsonText = geoJsonObject.toJson()
