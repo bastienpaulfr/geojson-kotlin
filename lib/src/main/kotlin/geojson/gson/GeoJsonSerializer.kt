@@ -23,8 +23,8 @@ class GeoJsonSerializer<T: GeoJsonObject> : JsonSerializer<T> {
             else -> throw Exception.UnsupportedType(src::class)
         }
 
-        val geoJsonType : GeoJsonType = GeoJsonType.forObject(src) ?: throw geojson.Exception.UnsupportedType( src::class )
-        jsonObject.addProperty( GeoJsonType.typeKey, geoJsonType.typeValue )
+        //val geoJsonType : GeoJsonType = GeoJsonType.forObject(src) ?: throw geojson.Exception.UnsupportedType( src::class )
+        //jsonObject.addProperty( GeoJsonType.typeKey, geoJsonType.typeValue )
 
         return jsonObject
     }
@@ -80,7 +80,6 @@ class GeoJsonSerializer<T: GeoJsonObject> : JsonSerializer<T> {
 
         return JsonObject().apply {
             add( GeoJsonType.FeatureCollection.featuresKey, featuresArray )
-            addProperty( GeoJsonType.FeatureCollection.totalFeaturesKey, featureCollection.totalFeatures )
         }
     }
 }

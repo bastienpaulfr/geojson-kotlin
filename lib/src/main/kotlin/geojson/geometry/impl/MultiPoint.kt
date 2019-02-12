@@ -9,6 +9,7 @@ import geojson.geometry.MultiGeometry
  * https://tools.ietf.org/html/rfc7946#section-3.1.3
  */
 class MultiPoint( coordinates: List<PointCoordinates> ) : Geometry<List<PointCoordinates>>( coordinates ), MultiGeometry<Point> {
+    val type : String = MultiPoint::class.java.simpleName
 
     override fun split(): List<Point> = coordinates.map( ::Point )
 

@@ -21,8 +21,6 @@ class GeoJsonTypeAdapterFactory : TypeAdapterFactory {
         val deserializer : JsonDeserializer<GeoJsonObject> = GeoJsonDeserializer()
 
         @Suppress("UNCHECKED_CAST")
-        val adapter = TreeTypeAdapter<GeoJsonObject>(serializer,deserializer,gson, geoJsonObjectTypeToken,this) as TypeAdapter<T>
-
-        return adapter
+        return TreeTypeAdapter(serializer,deserializer,gson, geoJsonObjectTypeToken,this) as TypeAdapter<T>
     }
 }

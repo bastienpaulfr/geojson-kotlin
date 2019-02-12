@@ -93,8 +93,7 @@ class GeoJsonDeserializer<T: GeoJsonObject> : JsonDeserializer<T> {
     private fun readFeatureCollection( element: JsonElement) : FeatureCollection {
         val jsonObject    : JsonObject = element.asJsonObject ?: throw geojson.Exception.IllegalFormat()
         val featuresArray : JsonArray = jsonObject.get(GeoJsonType.FeatureCollection.featuresKey)?.asJsonArray ?: throw geojson.Exception.IllegalFormat()
-        val totalFeatures : Int = jsonObject.get(GeoJsonType.FeatureCollection.totalFeaturesKey)?.asInt ?: throw geojson.Exception.IllegalFormat()
         val features = featuresArray.map { readFeature(it) }
-        return FeatureCollection( totalFeatures = totalFeatures, features = features )
+        return FeatureCollection(features = features )
     }
 }

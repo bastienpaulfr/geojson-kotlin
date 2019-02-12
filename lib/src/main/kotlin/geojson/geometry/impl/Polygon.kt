@@ -11,6 +11,7 @@ typealias PolygonCoordinates = List<List<Position>>
  * https://tools.ietf.org/html/rfc7946#section-3.1.6
  */
 class Polygon internal constructor( coordinates: PolygonCoordinates) : Geometry<PolygonCoordinates>( coordinates ) {
+    val type : String = Polygon::class.java.simpleName
 
     companion object : Geometry.Companion.Closed<Polygon, PolygonCoordinates> {
 

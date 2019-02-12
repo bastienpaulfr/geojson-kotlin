@@ -1,6 +1,7 @@
 package geojson.geometry.impl
 
 import geojson.Exception
+import geojson.FeatureCollection
 import geojson.Position
 import geojson.geometry.Geometry
 
@@ -10,6 +11,7 @@ typealias LineStringCoordinates = List<Position>
  * https://tools.ietf.org/html/rfc7946#section-3.1.4
  */
 class LineString( coordinates: LineStringCoordinates) : Geometry<LineStringCoordinates>( coordinates ) {
+    val type : String = LineString::class.java.simpleName
 
     companion object : Geometry.Companion.Open<LineString, LineStringCoordinates> {
 

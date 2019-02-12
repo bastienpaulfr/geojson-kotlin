@@ -7,6 +7,7 @@ import geojson.geometry.MultiGeometry
  * https://tools.ietf.org/html/rfc7946#section-3.1.7
  */
 class MultiPolygon( coordinates: List<PolygonCoordinates> ) : Geometry<List<PolygonCoordinates>>( coordinates ), MultiGeometry<Polygon> {
+    val type : String = MultiPolygon::class.java.simpleName
 
     override fun split(): List<Polygon> = coordinates.map( ::Polygon )
 

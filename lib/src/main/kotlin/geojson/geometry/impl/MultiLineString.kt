@@ -7,6 +7,7 @@ import geojson.geometry.MultiGeometry
  * https://tools.ietf.org/html/rfc7946#section-3.1.7
  */
 class MultiLineString( coordinates: List<LineStringCoordinates> ) : Geometry<List<LineStringCoordinates>>( coordinates ), MultiGeometry<LineString> {
+    val type : String = MultiLineString::class.java.simpleName
 
     override fun split(): List<LineString> = coordinates.map( ::LineString )
 

@@ -10,6 +10,7 @@ typealias PointCoordinates = Position
  * https://tools.ietf.org/html/rfc7946#section-3.1.2
  */
 class Point( coordinates: PointCoordinates) : Geometry<PointCoordinates>( coordinates ) {
+    val type : String = Point::class.java.simpleName
 
     /**
      * Convenience constructor, forming the mandated 'single Position' coordinate from Latitude

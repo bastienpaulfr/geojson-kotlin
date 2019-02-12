@@ -31,14 +31,13 @@ sealed class GeoJsonType( val typeValue: String, val `class`: KClass<*>) {
 
     object FeatureCollection : GeoJsonType(typeValue = "FeatureCollection", `class` = FeatureCollection ::class) {
         const val featuresKey      = "features"
-        val totalFeaturesKey = "totalFeatures"
     }
 
     companion object {
 
         const val typeKey = "type"
 
-        val allTypes : Array<GeoJsonType> = arrayOf(
+        private val allTypes : Array<GeoJsonType> = arrayOf(
                 GeoJsonType.Geometry.Point,
                 GeoJsonType.Geometry.MultiPoint,
                 GeoJsonType.Geometry.LineString,
